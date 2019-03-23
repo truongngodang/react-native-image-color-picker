@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { WebView, Platform } from 'react-native'
-import RNFetchBlob from 'react-native-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import RNImageColorPicker from 'image-color-picker'
 import { canvasHtml } from './canvas-html';
 
@@ -13,8 +13,14 @@ export default class ImageColorPicker extends Component {
     imageBlob: ''
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getImage(this.props.imageUrl);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.imageUrl !== nextProps.imageUrl) {
+      this.getImage(nextProps.imageUrl);
+    }
   }
 
   getImage = async imageUrl => {
