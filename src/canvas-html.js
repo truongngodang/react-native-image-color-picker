@@ -8,7 +8,7 @@ export const canvasHtml = (imageBlob, options) => {
         const {
           imageType = 'jpeg',
           paletteCount = 3,
-          defaultPalette = [255, 255, 255, 0],
+          defaultPalette = [0, 0, 0, 1],
           paletteType = 'dominant',
           colorType = 'rgba'
         } = options;
